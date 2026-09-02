@@ -336,6 +336,82 @@
   font-weight: 600;
 }
 
+.hackathon-section {
+  background: var(--surface-muted);
+}
+
+.hackathon-heading > p:last-child {
+  max-width: 620px;
+  margin: 24px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.hackathon-list {
+  border-top: 1px solid var(--border);
+}
+
+.hackathon-card {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto;
+  align-items: start;
+  gap: 28px;
+  padding: 34px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.hackathon-number {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.hackathon-details {
+  max-width: 760px;
+}
+
+.hackathon-details h3 {
+  margin: 0;
+  font-size: clamp(1.7rem, 3vw, 2.7rem);
+  letter-spacing: -0.05em;
+}
+
+.hackathon-details > p:not(.project-label) {
+  margin: 14px 0 0;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.hackathon-built {
+  display: flex;
+  gap: 8px;
+}
+
+.hackathon-built strong {
+  flex-shrink: 0;
+  color: var(--text-primary);
+}
+
+.hackathon-link {
+  align-self: center;
+  padding: 10px 0 10px 24px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.hackathon-link span {
+  display: inline-block;
+  margin-left: 6px;
+  transition: transform 180ms ease;
+}
+
+.hackathon-link:hover span,
+.hackathon-link:focus-visible span {
+  transform: translate(3px, -3px);
+}
+
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -392,6 +468,16 @@ footer {
   .featured-project {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .hackathon-card {
+    grid-template-columns: 52px minmax(0, 1fr);
+  }
+
+  .hackathon-link {
+    grid-column: 2;
+    justify-self: start;
+    padding-left: 0;
   }
 }
 
@@ -473,6 +559,20 @@ footer {
   .about-panel,
   .featured-project {
     padding: 24px;
+  }
+
+  .hackathon-card {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .hackathon-link {
+    grid-column: auto;
+  }
+
+  .hackathon-built {
+    flex-direction: column;
+    gap: 4px;
   }
 }
 

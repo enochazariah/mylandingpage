@@ -54,8 +54,41 @@ const projects = [
     title: 'Automated File Organizer',
     description:
       'A desktop application that automatically organizes files into structured folders based on file type.',
-    url: 'https://github.com/your-username/automated-file-organizer',
+    url: 'https://github.com/enochazariah/DesktopFileOrganizer-App/releases/download/v1.0.0/mysetup.exe',
     technologies: ['Desktop App', 'Automation'],
+  },
+];
+
+const hackathons = [
+  {
+    number: '01',
+    event: 'Hackathon Build',
+    title: 'Feddy Cosmic Match',
+    description:
+      'A discovery-focused web experience designed around interaction, matching, and digital engagement.',
+    built: 'Designed and shipped the product experience from concept through deployment.',
+    technologies: ['Web App', 'Product Design', 'Deployment'],
+    url: 'https://floral-sound-d388.feddypuppi.workers.dev/',
+  },
+  {
+    number: '02',
+    event: 'Hackathon Build',
+    title: 'Feddy-Suite',
+    description:
+      'A broader software ecosystem exploring how connected tools can create a more complete user-facing experience.',
+    built: 'Built the interface and product flow around a cohesive software suite.',
+    technologies: ['Software', 'Web App', 'UX'],
+    url: 'https://feddy-suite.vercel.app/',
+  },
+  {
+    number: '03',
+    event: 'Hackathon Build',
+    title: 'LuxeStay',
+    description:
+      'A hospitality and accommodation experience shaped around modern travel discovery and booking.',
+    built: 'Translated a real-world travel use case into a polished, responsive web product.',
+    technologies: ['Hospitality', 'Frontend', 'Responsive Web'],
+    url: 'https://luxestay-pi.vercel.app/',
   },
 ];
 
@@ -82,6 +115,7 @@ function App() {
             <a href="#about">About</a>
             <a href="#focus">Focus</a>
             <a href="#work">Work</a>
+            <a href="#hackathons">Hackathons</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
           </nav>
@@ -195,7 +229,7 @@ function App() {
               </div>
 
               <a className="button button-primary" href={featuredProject.url}>
-                View Project
+                Download for Windows (v1.0)
               </a>
             </article>
 
@@ -213,6 +247,44 @@ function App() {
                   </div>
 
                   <a href={project.url} target="_blank" rel="noreferrer">View Project →</a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="hackathons" className="section hackathon-section">
+          <div className="container">
+            <div className="section-heading hackathon-heading">
+              <p className="eyebrow">Hackathon Builds</p>
+              <h2>Fast ideas, focused builds, real products.</h2>
+              <p>
+                A look at the products I have explored and shipped through hackathon-style building: turning a brief into a
+                working experience under pressure.
+              </p>
+            </div>
+
+            <div className="hackathon-list">
+              {hackathons.map((hackathon) => (
+                <article className="hackathon-card" key={hackathon.title}>
+                  <div className="hackathon-number">{hackathon.number}</div>
+                  <div className="hackathon-details">
+                    <p className="project-label">{hackathon.event}</p>
+                    <h3>{hackathon.title}</h3>
+                    <p>{hackathon.description}</p>
+                    <p className="hackathon-built">
+                      <strong>What I built</strong>
+                      {hackathon.built}
+                    </p>
+                    <div className="project-meta">
+                      {hackathon.technologies.map((technology) => (
+                        <span key={`${hackathon.title}-${technology}`}>{technology}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <a className="hackathon-link" href={hackathon.url} target="_blank" rel="noreferrer">
+                    Explore build <span aria-hidden="true">↗</span>
+                  </a>
                 </article>
               ))}
             </div>
