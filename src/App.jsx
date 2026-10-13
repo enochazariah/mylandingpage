@@ -59,36 +59,91 @@ const projects = [
   },
 ];
 
+const certifications = [
+  {
+    title: 'Supervised Machine Learning: Regression and Classification',
+    issuer: 'DeepLearning.AI & Stanford Online · Coursera',
+    file: '/images/certifications/certificate-01.pdf',
+    format: 'PDF',
+  },
+  {
+    title: 'AI Agents and Agentic AI with Python & Generative AI',
+    issuer: 'Vanderbilt University · Coursera',
+    file: '/images/certifications/certificate-02.pdf',
+    format: 'PDF',
+  },
+  {
+    title: 'Neural Networks and Deep Learning',
+    issuer: 'DeepLearning.AI · Coursera',
+    file: '/images/certifications/certificate-03.pdf',
+    format: 'PDF',
+  },
+  {
+    title: 'Unsupervised Learning, Recommenders, Reinforcement Learning',
+    issuer: 'DeepLearning.AI & Stanford Online · Coursera',
+    file: '/images/certifications/certificate-04.pdf',
+    format: 'PDF',
+  },
+  {
+    title: 'Python Developer Certification',
+    issuer: 'freeCodeCamp',
+    file: '/images/certifications/certificate-05.png',
+    format: 'PNG',
+  },
+];
+
 const hackathons = [
   {
-    number: '01',
-    event: 'Hackathon Build',
-    title: 'Feddy Cosmic Match',
+    event: 'WarriorHacks 2.0 · MVP',
+    title: 'CampusPulse AI',
     description:
-      'A discovery-focused web experience designed around interaction, matching, and digital engagement.',
-    built: 'Designed and shipped the product experience from concept through deployment.',
-    technologies: ['Web App', 'Product Design', 'Deployment'],
-    url: 'https://floral-sound-d388.feddypuppi.workers.dev/',
+      'Matches Nigerian students with scholarships, internships, and hackathons from a manually curated opportunity bank. Its rule-based rankings explain why an opportunity matches and what requirements still need checking.',
+    image: '/images/hackathons/campuspulse-ai-thumbnail.png',
+    links: [
+      { label: 'Live App', url: 'https://campuspulse-ai-smoky.vercel.app/' },
+      {
+        label: 'Download Test APK',
+        url: 'https://campuspulse-ai-smoky.vercel.app/downloads/campuspulse-ai.apk',
+      },
+    ],
+    technologies: ['Web App', 'Android Test Build', 'Rule-Based Matching'],
   },
   {
-    number: '02',
-    event: 'Hackathon Build',
-    title: 'Feddy-Suite',
+    event: 'Colosseum Online Hackathon · Sep 14–Oct 12, 2026',
+    title: 'Crypto Worlds Fair',
     description:
-      'A broader software ecosystem exploring how connected tools can create a more complete user-facing experience.',
-    built: 'Built the interface and product flow around a cohesive software suite.',
-    technologies: ['Software', 'Web App', 'UX'],
-    url: 'https://feddy-suite.vercel.app/',
+      'The supplied exhibitor pass identifies the Crypto Worlds Fair as an online hackathon hosted by Colosseum.',
+    image: '/images/hackathons/crypto-worlds-fair-feddycoddy.png',
+    links: [],
+    technologies: [],
   },
   {
-    number: '03',
-    event: 'Hackathon Build',
-    title: 'LuxeStay',
+    event: 'Recent Hackathon Submission',
+    title: 'Feddy Study Coach',
     description:
-      'A hospitality and accommodation experience shaped around modern travel discovery and booking.',
-    built: 'Translated a real-world travel use case into a polished, responsive web product.',
-    technologies: ['Hospitality', 'Frontend', 'Responsive Web'],
-    url: 'https://luxestay-pi.vercel.app/',
+      'An AI-powered learning platform with Tutor Chat, PDF Hub, Research & Video, and Active Recall.',
+    built:
+      'Built with Django and React using a multi-agent architecture and Amazon Bedrock Claude Sonnet 4.6.',
+    links: [
+      {
+        label: 'View Repository',
+        url: 'https://github.com/enochazariah/feddy-study-coach.git',
+      },
+    ],
+    technologies: ['Django', 'React', 'Multi-Agent Architecture', 'Amazon Bedrock Claude Sonnet 4.6'],
+  },
+  {
+    event: 'Submitted · Nebius x NVIDIA Global AI Hackathon',
+    title: 'ReliefMesh',
+    description:
+      'FastAPI backend with a typed modular agent architecture, Nebius Token Factory adapter, and allowlisted tool registry.',
+    links: [
+      {
+        label: 'View Repository',
+        url: 'https://github.com/enochazariah/ReliefMesh.git',
+      },
+    ],
+    technologies: ['FastAPI', 'Typed Agent Architecture', 'Nebius Token Factory', 'Allowlisted Tools'],
   },
 ];
 
@@ -115,6 +170,7 @@ function App() {
             <a href="#about">About</a>
             <a href="#focus">Focus</a>
             <a href="#work">Work</a>
+            <a href="#certifications">Certifications</a>
             <a href="#hackathons">Hackathons</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
@@ -131,11 +187,7 @@ function App() {
 
             <p className="eyebrow">Enoch Azariah</p>
 
-            <h1>
-              Computer Engineering Student
-              <br />
-              <span>& Technology Builder</span>
-            </h1>
+            <h1>Computer Engineering Undergraduate</h1>
 
             <p className="hero-specialties">
               AI · Agentic Systems · Full-Stack · E-Commerce · Web3
@@ -253,38 +305,86 @@ function App() {
           </div>
         </section>
 
+        <section id="certifications" className="section certification-section">
+          <div className="container">
+            <div className="section-heading">
+              <p className="eyebrow">Certifications</p>
+              <h2>Courses and credentials I have completed.</h2>
+            </div>
+
+            <div className="certification-grid">
+              {certifications.map((certification) => (
+                <article className="certification-card" key={certification.file}>
+                  <div className="certification-preview">
+                    {certification.format === 'PNG' ? (
+                      <img
+                        src={certification.file}
+                        alt={`${certification.title} certificate`}
+                      />
+                    ) : (
+                      <span className="certificate-format" aria-hidden="true">
+                        PDF
+                      </span>
+                    )}
+                  </div>
+                  <p className="project-label">{certification.issuer}</p>
+                  <h3>{certification.title}</h3>
+                  {certification.format === 'PDF' && (
+                    <a
+                      className="certification-link"
+                      href={certification.file}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      View certificate <span aria-hidden="true">↗</span>
+                    </a>
+                  )}
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section id="hackathons" className="section hackathon-section">
           <div className="container">
             <div className="section-heading hackathon-heading">
               <p className="eyebrow">Hackathon Builds</p>
-              <h2>Fast ideas, focused builds, real products.</h2>
-              <p>
-                A look at the products I have explored and shipped through hackathon-style building: turning a brief into a
-                working experience under pressure.
-              </p>
+              <h2>Projects and submissions from hackathons.</h2>
             </div>
 
-            <div className="hackathon-list">
+            <div className="hackathon-project-grid">
               {hackathons.map((hackathon) => (
-                <article className="hackathon-card" key={hackathon.title}>
-                  <div className="hackathon-number">{hackathon.number}</div>
-                  <div className="hackathon-details">
+                <article className="hackathon-project-card" key={hackathon.title}>
+                  {hackathon.image && (
+                    <div className="hackathon-image">
+                      <img src={hackathon.image} alt={`${hackathon.title} project`} />
+                    </div>
+                  )}
+                  <div className="hackathon-card-content">
                     <p className="project-label">{hackathon.event}</p>
                     <h3>{hackathon.title}</h3>
                     <p>{hackathon.description}</p>
-                    <p className="hackathon-built">
-                      <strong>What I built</strong>
-                      {hackathon.built}
-                    </p>
+                    {hackathon.built && <p>{hackathon.built}</p>}
                     <div className="project-meta">
                       {hackathon.technologies.map((technology) => (
                         <span key={`${hackathon.title}-${technology}`}>{technology}</span>
                       ))}
                     </div>
+                    {hackathon.links.length > 0 && (
+                      <div className="hackathon-actions">
+                        {hackathon.links.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {link.label} <span aria-hidden="true">↗</span>
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  <a className="hackathon-link" href={hackathon.url} target="_blank" rel="noreferrer">
-                    Explore build <span aria-hidden="true">↗</span>
-                  </a>
                 </article>
               ))}
             </div>
@@ -318,6 +418,9 @@ function App() {
             </p>
 
             <div className="social-links" aria-label="Social links">
+              <a className="button button-secondary" href="mailto:enochazariah11@gmail.com">
+                enochazariah11@gmail.com
+              </a>
               {Object.values(socialLinks).map((link) => (
                 <a key={link.label} href={link.url} className="button button-secondary" target="_blank" rel="noreferrer">
                   {link.label}
